@@ -10,7 +10,10 @@
 </head>
 <body>
     <header>
-        <h1>EcoHora</h1>
+        <div class="brand">
+            <h1>EcoHora</h1>
+            <img src="/assets/Ca105ad9cfc8580c765101d17bbb2323.webp" alt="" class="leaf-img">
+        </div>
         <span id="burguer" class="material-symbols-outlined" onclick="clickMenu()">
          menu
         </span>
@@ -30,7 +33,7 @@
         <article>
             <h2>Apresentação do projeto</h2><br>
             <p>
-                O projeto tem como objetivo desenvolver uma aplicação voltada aos estudantes universitários
+                O projeto tem como objetivo desenvolver uma aplicação voltada aos estudantes universitáriosd
                 da Fundação Santo André, permitindo incentivar práticas sustentáveis por meio da reciclagem
                 de resíduos sólidos recicláveis em troca de horas complementares.
             </p>
@@ -62,17 +65,20 @@
     <script>
         function mudouTamanho() {
             if (window.innerWidth >= 768) {
-                itens.style.display = 'block'
-            } else {
-                itens.style.display = 'none'
-            }
+                itens.style.display = 'flex'
+            } // Removido o Else pois conflitava na função abaixo
         }
 
+        // Aproveitando a construção, usei esse método para estar constantemente usando a função.
+        setInterval(() => {
+            mudouTamanho();
+        }, 10) // O valor é medido assim: 1000 = 1s
+
         function clickMenu() {
-            if (itens.style.display == 'block') {
+            if (itens.style.display == 'flex') {
                 itens.style.display = 'none'
             } else {
-                itens.style.display = 'block'
+                itens.style.display = 'flex'
             }
         }
     </script>

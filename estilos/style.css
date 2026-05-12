@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 * {
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-
     margin: 0px;
     padding: 0px;
 }
@@ -12,12 +12,19 @@ body, html {
 }
 
 header {
-    background-color: rgba(94, 220, 77, 0.833);
+    background-color: rgb(67, 166, 219);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem 1rem 1rem;
 }
 
-header > h1 {
-    padding: 10px;
-    text-align: center;
+.brand {
+    display: flex;
+}
+
+header > .brand > .leaf-img{
+    width: 2rem;
 }
 
 header > h3 {
@@ -27,7 +34,7 @@ header > h3 {
 span#burguer {
     background-color: rgb(46, 46, 46);
     color: white;
-    display: block;
+    display: none;
     text-align: center;
     padding: 10px;
     cursor: pointer;
@@ -44,6 +51,8 @@ menu {
 
 menu > ul {
     list-style-type: none;
+    display: flex;
+    gap: 0.3rem;
 }
 
 menu > ul > li > a {
@@ -51,26 +60,27 @@ menu > ul > li > a {
     padding: 10px;
     text-decoration: none;
     text-align: center;
-    background-color: rgba(33, 205, 42, 0.612);
+    background-color: rgb(34, 134, 206);
     color: white;
-    border-top: 2px solid rgba(33, 205, 42, 0.612);
+    border-top: 2px solid rgb(141, 195, 233);
 }
 
 menu > ul > li > a:hover {
-    background-color: gray;
+    background-color: rgb(141, 195, 233);
 }
 
 menu#itens {
     text-align: center;
 }
 
-main {
+main > article {
     width: 90vw;
     background-color: white;
     margin: auto;
     margin-top: 10px;
-    padding: 10px;
+    padding: 10px 30px;
     border-radius: 10px;
+    box-shadow: 0 3px 5px gray;
 }
 
 ul#ap {
@@ -78,8 +88,9 @@ ul#ap {
     color: black;
 }
 
-article > h1 {
-    padding-bottom: 20px;
+article > h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 article > p {
