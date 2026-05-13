@@ -1,15 +1,23 @@
 @charset "UTF-8";
 
-@media screen and (min-width: 768px) {
+/* Telas menores que 768px */
+@media screen and (max-width: 768px) {
     span#burguer {
-        display: none;
+        display: block;
+        /* margin-left: 3rem */
     }
 
     menu {
-        display: block;
+        position: absolute;
+        top: 14dvh;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+        background-color: rgb(141, 195, 233);
+        padding: 1rem 0 ;
     }
 
-    menu > ul > li {
-        display: inline-block;
+    main > article {
+        margin-top: 5rem;
     }
 }
