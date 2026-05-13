@@ -62,6 +62,7 @@ menu > ul > li > a:hover {
 
 menu#itens {
     text-align: center;
+    margin-bottom: 5px;
 }
 
 main {
@@ -86,4 +87,8 @@ article > p {
     text-align: justify;
     margin-bottom: 10px;
     text-indent: 20px;
+}
+
+img#sol {
+    width: 20px;
 }
