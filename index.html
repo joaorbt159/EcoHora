@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"/>
     <link rel="stylesheet" href="estilos/style.css">
     <link rel="stylesheet" href="estilos/media.css">
+    <link rel="icon" href="assets/Ca105ad9cfc8580c765101d17bbb2323.webp">
 </head>
 <body>
     <header>
-        <h1>EcoHora</h1>
+        <div class="brand">
+            <h1>EcoHora</h1>
+            <img src="assets/Ca105ad9cfc8580c765101d17bbb2323.jpg" alt="batata" class="leaf-img">
+        </div>
         <span id="burguer" class="material-symbols-outlined" onclick="clickMenu()">
          menu
         </span>
@@ -20,8 +24,8 @@
                 <li><a href="#">Grupo</a></li>
                 <li><a href="#">Lixão</a></li>
                 <li><a href="#">Loja</a></li>
-                <li><a href="#">Batalha</a></li>
-                <li><a href="#">Postos</a></li>
+                <li><a href="pages/batalha.html">Batalha</a></li>
+                <li><a href="pages/pontos-de-coleta.html">Postos</a></li>
             </ul>
         </menu>
         <h3>Pontos: 0</h3>
@@ -30,7 +34,7 @@
         <article>
             <h2>Apresentação do projeto</h2><br>
             <p>
-                O projeto tem como objetivo desenvolver uma aplicação voltada aos estudantes universitários
+                O projeto tem como objetivo desenvolver uma aplicação voltada aos estudantes universitáriosd
                 da Fundação Santo André, permitindo incentivar práticas sustentáveis por meio da reciclagem
                 de resíduos sólidos recicláveis em troca de horas complementares.
             </p>
@@ -62,17 +66,20 @@
     <script>
         function mudouTamanho() {
             if (window.innerWidth >= 768) {
-                itens.style.display = 'block'
-            } else {
-                itens.style.display = 'none'
-            }
+                itens.style.display = 'flex'
+            } // Removido o Else pois conflitava na função abaixo
         }
 
+        // Aproveitando a construção, usei esse método para estar constantemente usando a função.
+        setInterval(() => {
+            mudouTamanho();
+        }, 10) // O valor é medido assim: 1000 = 1s
+
         function clickMenu() {
-            if (itens.style.display == 'block') {
+            if (itens.style.display == 'flex') {
                 itens.style.display = 'none'
             } else {
-                itens.style.display = 'block'
+                itens.style.display = 'flex'
             }
         }
     </script>
