@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoHora</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"/>
-    <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/media.css">
-    <link rel="icon" href="assets/Ca105ad9cfc8580c765101d17bbb2323.webp">
+    <link rel="stylesheet" href="/estilos/style.css">
+    <link rel="stylesheet" href="/estilos/media.css">
+    <link rel="icon" href="/assets/Ca105ad9cfc8580c765101d17bbb2323.webp">
 
     <style>
         body{
@@ -28,7 +28,7 @@
         .brand{
             display: flex;
             align-items: center;
-            gap: 10px;
+            /* gap: 10px; */
         }
 
         .brand p{
@@ -39,8 +39,7 @@
 
         /* imagem quadrada */
         .brand img{
-            width: 60px;
-            height: 60px;
+            width: 30px;
             object-fit: cover;
         }
 
@@ -86,7 +85,7 @@
         #classe-escolhida{
             text-align: center;
             font-size: 20px;
-            margin-bottom: 40px;
+            padding-bottom: 40px;
         }
 
         .classe-img{
@@ -108,7 +107,7 @@
     <header>
         <div class="brand">
             <p>EcoHora</p>
-            <img src="../assets/Ca105ad9cfc8580c765101d17bbb2323.jpg" alt="logo">
+            <img src="/assets/Ca105ad9cfc8580c765101d17bbb2323.webp" alt="logo">
         </div>
 
         <button onclick="backMenu()" class="back-menu-button">
@@ -132,7 +131,7 @@
         // VOLTAR AO MENU
         // ======================
         function backMenu(){
-            window.location.href = "../";
+            window.location.href = "/";
         }
 
         // ======================
@@ -160,7 +159,7 @@
                 6,
                 5,
                 "Berserk",
-                "../assets/guerreiro.jpg"
+                "/assets/guerreiro.jpg"
             ),
 
             new ClassePersonagem(
@@ -169,7 +168,7 @@
                 8,
                 2,
                 "Muralha",
-                "../assets/escudeiro.png"
+                "/assets/escudeiro.png"
             ),
 
             new ClassePersonagem(
@@ -178,7 +177,7 @@
                 5,
                 8,
                 "Dos Mortos",
-                "../assets/necromante.png"
+                "/assets/necromante.png"
             ),
 
             // SUPORTES
@@ -188,7 +187,7 @@
                 5,
                 8,
                 "Purificação",
-                "../assets/clerigo.png"
+                "/assets/clerigo.png"
             ),
 
             new ClassePersonagem(
@@ -197,7 +196,7 @@
                 3,
                 10,
                 "Canção da Natureza",
-                "../assets/druida.jpg"
+                "/assets/druida.jpg"
             ),
 
             new ClassePersonagem(
@@ -206,7 +205,7 @@
                 3,
                 12,
                 "Animar a Festa",
-                "../assets/bardo.png"
+                "/assets/bardo.png"
             ),
 
             // ATACANTES
@@ -216,7 +215,7 @@
                 4,
                 14,
                 "Sniper",
-                "../assets/arqueiro.png"
+                "/assets/arqueiro.png"
             ),
 
             new ClassePersonagem(
@@ -225,7 +224,7 @@
                 2,
                 20,
                 "Apunhalada",
-                "../assets/ladino.jpg"
+                "/assets/ladino.jpg"
             ),
 
             new ClassePersonagem(
@@ -234,7 +233,7 @@
                 3,
                 10,
                 "Magia Proíbida",
-                "../assets/mago.png"
+                "/assets/mago.png"
             )
         ];
 
