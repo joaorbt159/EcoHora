@@ -54,7 +54,8 @@ header .brand img{
     cursor: pointer;
     border: none;
     border-radius: 10px;
-    background-color: rgb(255, 255, 255, 0.2);
+    background-color: rgb(255, 255, 255);
+    color: black;
     padding: 0 1rem;
 }
 
