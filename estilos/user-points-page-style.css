@@ -50,7 +50,6 @@ header .brand img{
     width: 2rem;
 }
 .back-menu-button{
-    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
     border: none;
@@ -84,6 +83,10 @@ header .brand img{
     justify-content: center;
     img{
         border-radius: 25px;
-        max-width: 100%;
+        max-width: 90%;
     }
+}
+
+footer {
+    margin-top: 1rem;
 }

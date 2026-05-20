@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mininu</title>
+    <link rel="stylesheet" href="perso.css">
+</head>
+<body>
+    <!--  Ordem de iniciativa  -->
+
+    <!--  Divisão dos personagens e do boss  -->
+<div class="raid-layout">
+
+    <div id="time-raid"></div>
+
+    <div id="boss-area">
+
+        <img
+            id="boss-img"
+            class="imagem-lateral"
+        >
+
+        <div class="boss-ui">
+
+            <div class="barra-hp">
+                <div id="boss-hp-fill"></div>
+            </div>
+
+            <p id="boss-vida">
+                50 / 50
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // 1. Classe
+    class ClassePersonagem {
+
+        constructor(
+            nome,
+            vida,
+            defesa,
+            velocidade,
+            dano,
+            especial,
+            imagem
+        ){
+            this.nome = nome;
+
+            this.vida = vida;
+            this.vidaMax = vida;
+
+            this.defesa = defesa;
+            this.velocidade = velocidade;
+            this.dano = dano;
+
+            this.especial = especial;
+            this.imagem = imagem;
+
+            this.sanguesugas = 0;
+        }
+
+        atacar(alvo){
+
+            // calcula dano
+            let danoFinal =
+                this.dano - alvo.defesa;
+
+            // mínimo de dano
+            if(danoFinal < 1){
+                danoFinal = 1;
+            }
+
+            // tira vida
+            alvo.vida -= danoFinal;
+
+            if(alvo === boss){
+                atualizarBossUI();
+            }
+
+            console.log(
+                `${this.nome}
+                causou
+                ${danoFinal}
+                de dano em
+                ${alvo.nome}`
+            );
+
+            // habilidade do necromante
+            if(this.nome === "Necromante"){
+
+                alvo.sanguesugas++;
+
+                console.log(
+                    `${alvo.nome}
+                    recebeu uma
+                    sanguessuga!
+                    Total:
+                    ${alvo.sanguesugas}`
+                );
+            }
+
+            // impedir vida negativa
+            if(alvo.vida <= 0){
+
+                alvo.vida = 0;
+
+                console.log(
+                    `${alvo.nome}
+                    morreu`
+                );
+            }
+        }
+
+        aplicarStatus(){
+
+            if(this.sanguesugas > 0){
+
+                this.vida -=
+                this.sanguesugas;
+
+                console.log(
+                    `${this.nome}
+                    perdeu
+                    ${this.sanguesugas}
+                    HP`
+                );
+            }
+        }
+    }
+
+
+    // 2. Jogador salvo
+    const jogadorSalvo =
+    JSON.parse(
+        localStorage.getItem(
+            "classeJogador"
+        )
+    );
+
+
+    // 3. Recriar jogador
+    const jogador =
+    new ClassePersonagem(
+        jogadorSalvo.nome,
+        jogadorSalvo.vida,
+        jogadorSalvo.defesa,
+        jogadorSalvo.velocidade,
+        jogadorSalvo.dano,
+        jogadorSalvo.especial,
+        jogadorSalvo.imagem
+    );
+
+
+    // 4. Time
+    const aliados = [
+
+        jogador,
+
+        new ClassePersonagem(
+            "Mago",
+            80,
+            5,
+            12,
+            6,
+            "Bola de Fogo",
+            "imagem/mago.png"
+        ),
+
+        new ClassePersonagem(
+            "Arqueiro",
+            90,
+            8,
+            18,
+            7,
+            "Flecha Dupla",
+            "imagem/arqueiro.png"
+        ),
+
+        new ClassePersonagem(
+            "Mago",
+            80,
+            5,
+            12,
+            6,
+            "Bola de Fogo",
+            "imagem/mago.png"
+        ),
+
+        new ClassePersonagem(
+            "Arqueiro",
+            90,
+            8,
+            18,
+            7,
+            "Flecha Dupla",
+            "imagem/arqueiro.png"
+        ),
+
+        new ClassePersonagem(
+            "Arqueiro",
+            90,
+            8,
+            18,
+            7,
+            "Flecha Dupla",
+            "imagem/arqueiro.png"
+        )
+    ];
+
+
+    // 5. Boss
+    const boss =
+    new ClassePersonagem(
+        "Mininu",
+        50,
+        8,
+        4,
+        6,
+        "uuhh que medo",
+        "imagem/mininu.png"
+    );
+
+
+    function iniciarCombate(){
+    // aliados atacam
+        aliados.forEach(personagem => {
+
+            setInterval(() => {
+
+                // parar se morreu
+                if(
+                    personagem.vida <= 0 ||
+                    boss.vida <= 0
+                ){
+                    return;
+                }
+
+                personagem.atacar(
+                    boss
+                );
+
+                console.log(
+                    `Boss HP:
+                    ${boss.vida}`
+                );
+
+            },
+            3000 /
+            personagem.velocidade
+            );
+        });
+
+
+        // boss ataca
+        setInterval(() => {
+
+            if(boss.vida <= 0){
+
+                console.log(
+                    "Vitória!"
+                );
+
+                return;
+            }
+
+            // pegar aliado vivo aleatório
+            const vivos =
+            aliados.filter(
+                p => p.vida > 0
+            );
+
+            if(vivos.length <= 0){
+
+                console.log(
+                    "Derrota!"
+                );
+
+                return;
+            }
+
+            const alvo =
+            vivos[
+                Math.floor(
+                    Math.random()
+                    * vivos.length
+                )
+            ];
+
+            boss.atacar(
+                alvo
+            );
+
+        },
+        3000 /
+        boss.velocidade
+        );
+    }
+
+
+    // 6. Mostrar aliados
+    const raid =
+    document.getElementById(
+        "time-raid"
+    );
+
+    aliados.forEach(personagem => {
+
+        const img =
+        document.createElement(
+            "img"
+        );
+
+        img.src =
+        personagem.imagem;
+
+        img.classList.add(
+            "personagem-img"
+        );
+
+        raid.appendChild(img);
+    });
+
+
+    // 7. Mostrar boss
+    document.getElementById(
+        "boss-img"
+    ).src =
+    boss.imagem;
+    atualizarBossUI();
+
+
+    function atualizarBossUI(){
+
+    // texto
+    document.getElementById(
+        "boss-vida"
+    ).textContent =
+
+    `${boss.vida}
+    /
+    ${boss.vidaMax}`;
+
+
+    // porcentagem da barra
+    const porcentagem =
+
+    (boss.vida /
+    boss.vidaMax)
+
+    * 100;
+
+    document.getElementById(
+        "boss-hp-fill"
+    ).style.width =
+
+    `${porcentagem}%`;
+}
+
+
+    // 8. Loop dos status
+    setInterval(() => {
+
+        aliados.forEach(personagem => {
+            personagem.aplicarStatus();
+        });
+
+        boss.aplicarStatus();
+
+    }, 1000);
+    iniciarCombate();
+</script>
+</body>
+</html>
