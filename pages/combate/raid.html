@@ -28,7 +28,7 @@
             </div>
 
             <p id="boss-vida">
-                50 / 50
+                200 / 200
             </p>
 
         </div>
@@ -187,7 +187,7 @@
             80,
             5,
             12,
-            6,
+            0,
             "Bola de Fogo",
             "imagem/mago.png"
         ),
@@ -197,7 +197,7 @@
             90,
             8,
             18,
-            7,
+            0,
             "Flecha Dupla",
             "imagem/arqueiro.png"
         ),
@@ -218,9 +218,9 @@
     const boss =
     new ClassePersonagem(
         "Mininu",
-        50,
-        8,
-        4,
+        200,
+        15,
+        10,
         6,
         "uuhh que medo",
         "imagem/mininu.png"
@@ -311,19 +311,41 @@
 
     aliados.forEach(personagem => {
 
-        const img =
+        const card =
         document.createElement(
-            "img"
+            "div"
         );
 
-        img.src =
-        personagem.imagem;
-
-        img.classList.add(
-            "personagem-img"
+        card.classList.add(
+            "personagem-card"
         );
 
-        raid.appendChild(img);
+        card.innerHTML = `
+
+            <img
+                src="${personagem.imagem}"
+                class="personagem-img"
+            >
+
+            <div class="hp-ui">
+
+                <div class="barra-hp">
+                    <div
+                        class="hp-fill"
+                        id="hp-${personagem.nome}"
+                    ></div>
+                </div>
+
+                <p id="texto-${personagem.nome}">
+                    ${personagem.vida}
+                    /
+                    ${personagem.vidaMax}
+                </p>
+
+            </div>
+        `;
+
+        raid.appendChild(card);
     });
 
 
