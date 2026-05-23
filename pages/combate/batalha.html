@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoHora</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"/>
-    <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/media.css">
-    <link rel="icon" href="assets/Ca105ad9cfc8580c765101d17bbb2323.webp">
+    <link rel="stylesheet" href="../../estilos/style.css">
+    <link rel="icon" href="../../assets/Ca105ad9cfc8580c765101d17bbb2323.webp">
 
     <style>
         body{
@@ -106,13 +105,22 @@
 
     <header>
         <div class="brand">
-            <p>EcoHora</p>
-            <img src="../assets/Ca105ad9cfc8580c765101d17bbb2323.jpg" alt="logo">
+            <h1>EcoHora</h1>
+            <img src="../../assets/Ca105ad9cfc8580c765101d17bbb2323.jpg" alt="batata" class="leaf-img">
         </div>
-
-        <button onclick="backMenu()" class="back-menu-button">
-            Menu
-        </button>
+        <span id="burguer" class="material-symbols-outlined" onclick="clickMenu()">
+         menu
+        </span>
+        <menu id="itens">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="#">Grupo</a></li>
+                <li><a href="#">Lixão</a></li>
+                <li><a href="#">Loja</a></li>
+                <li><a href="batalha.html">Batalha</a></li>
+                <li><a href="../pontos-de-coleta.html">Postos</a></li>
+            </ul>
+        </menu>
     </header>
 
     <h1 class="title">Escolha sua Classe</h1>
@@ -130,8 +138,23 @@
         // ======================
         // VOLTAR AO MENU
         // ======================
-        function backMenu(){
-            window.location.href = "../";
+        function mudouTamanho() {
+            if (window.innerWidth >= 768) {
+                itens.style.display = 'flex'
+            } // Removido o Else pois conflitava na função abaixo
+        }
+
+        // Aproveitando a construção, usei esse método para estar constantemente usando a função.
+        setInterval(() => {
+            mudouTamanho();
+        }, 10) // O valor é medido assim: 1000 = 1s
+
+        function clickMenu() {
+            if (itens.style.display == 'flex') {
+                itens.style.display = 'none'
+            } else {
+                itens.style.display = 'flex'
+            }
         }
 
         // ======================
@@ -215,7 +238,7 @@
             new ClassePersonagem(
                 "Guerreiro",
                 8,
-                6,
+                7,
                 5,
                 5,
                 "Berserk", // ganha dano com base na vida perdida
@@ -225,18 +248,18 @@
             new ClassePersonagem(
                 "Escudeiro",
                 10,
-                8,
+                9,
                 2,
-                2,
+                3,
                 "Muralha", // aumenta a defesa dos aliados
                 "imagem/escudeiro.png"
             ),
 
             new ClassePersonagem(
                 "Necromante",
-                7,
+                6,
+                3,
                 5,
-                8,
                 1,
                 "Dos Mortos",  // coloca sanguesugas no alvo, causando dano e se curando
                 "imagem/necromante.png"
@@ -255,20 +278,20 @@
 
             new ClassePersonagem(
                 "Druída",
-                6,
-                3,
+                7,
+                4,
                 10,
                 2,
-                "Canção da Natureza",  // Cura uma pequena quantidade de vida de todos os aliados
+                "Florescer",  // aumenta a velocidade de aliados aleatórios
                 "imagem/druida.jpg"
             ),
 
             new ClassePersonagem(
                 "Bardo",
-                5,
-                3,
+                6,
+                4,
                 12,
-                0,
+                2,
                 "Animar a Festa",  //  Aumenta o dano de aliados aleatórios
                 "imagem/bardo.png"
             ),
@@ -276,8 +299,8 @@
             // ATACANTES
             new ClassePersonagem(
                 "Arqueiro",
+                6,
                 5,
-                4,
                 14,
                 6,
                 "Sniper",  //  Dispara uma flecha pesada que causa x5 o dano normal, mas com 75% de chance de erro
@@ -286,8 +309,8 @@
 
             new ClassePersonagem(
                 "Ladino",
+                5,
                 4,
-                2,
                 20,
                 8,
                 "Apunhalada",  //  20% de chance de deixar o alvo sangrando (perde 2% da vida por segundo, dura 5s)
@@ -297,7 +320,7 @@
             new ClassePersonagem(
                 "Mago",
                 5,
-                3,
+                5,
                 10,
                 10,
                 "Magia Proíbida",  // Deixa o alvo queimando (toma 5 de dano por segundo, dura 5s)
@@ -305,14 +328,10 @@
             )
         ];
 
-//        const boss = new ClassePersonagem (
-//            "Mininu",
-//            50,
-//            8,
-//            10,
-//            "uuhh que medo '-'",
-//            "imagem/mininu.png"
-//        )
+        localStorage.setItem(
+            "todasClasses",
+            JSON.stringify(classes)
+        );
 
         // ======================
         // CLASSE ESCOLHIDA
