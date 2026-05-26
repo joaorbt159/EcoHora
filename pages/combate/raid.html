@@ -331,8 +331,8 @@
                     // 20% de chance
                     if(Math.random() <= 0.20){
 
-                        alvo.sangramento = 2;
-                        alvo.tempoSangramento = 5;
+                        alvo.sangramento = 5;
+                        alvo.tempoSangramento = 3;
 
                         console.log(
                             `${alvo.nome}
@@ -346,9 +346,9 @@
                 case "Mago": {
 
                     // 10% de chance
-                    if(Math.random() <= 0.10){
+                    if(Math.random() <= 0.15){
 
-                        alvo.queimadura = 5;
+                        alvo.queimadura = 10;
                         alvo.tempoQueimadura = 5;
 
                         console.log(
@@ -403,7 +403,7 @@
                     }
                 });
 
-            
+            // SANGRAMENTO
                 if(
                     this.tempoSangramento > 0
                 ){
@@ -411,7 +411,7 @@
                     const danoSangramento =
 
                     Math.floor(
-                        this.vidaMax * 0.02
+                        this.vidaMax * 0.05
                     );
 
                     this.vida -=
@@ -427,6 +427,7 @@
                     );
                 }
 
+                // QUEIMADURA
                 if(
                     this.tempoQueimadura > 0
                 ){
