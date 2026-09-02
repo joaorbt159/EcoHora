@@ -52,10 +52,11 @@ criarContaForm.addEventListener(
         event.preventDefault();
 
 
-        const ra =
-            document.getElementById(
-                "cadastroRA"
-            ).value.trim();
+        const email =
+        document.getElementById(
+            "cadastroEmail"
+        ).value.trim();
+
 
 
         const senha =
@@ -91,7 +92,7 @@ criarContaForm.addEventListener(
 
         const userData = {
 
-            email: ra,
+            email,
 
             password: senha
 
@@ -171,9 +172,9 @@ entrarForm.addEventListener(
         event.preventDefault();
 
 
-        const ra =
+        const email =
             document.getElementById(
-                "loginRA"
+                "loginEmail"
             ).value.trim();
 
 
@@ -193,15 +194,11 @@ entrarForm.addEventListener(
 
             /* =============================================
                CHAMA auth.js
-
-               O RA é enviado como "email"
-               porque é assim que a API atual
-               está estruturada.
             ============================================= */
 
             const resposta =
                 await login(
-                    ra,
+                    email,
                     senha
                 );
 
@@ -213,12 +210,12 @@ entrarForm.addEventListener(
 
 
             /* =============================================
-               SALVAR RA DA SESSÃO
+               SALVAR EMAIL DA SESSÃO
             ============================================= */
 
             localStorage.setItem(
-                "usuarioRA",
-                ra
+                "usuarioEmail",
+                email
             );
 
 
@@ -249,7 +246,7 @@ entrarForm.addEventListener(
 
             mostrarMensagem(
                 erro.message ||
-                "RA ou senha incorretos!"
+                "Email ou senha incorretos!"
             );
 
 
