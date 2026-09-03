@@ -33,8 +33,12 @@
   <div class="hero">
     <div class="hero-main">
       <span class="eyebrow">ECOHORA • FUNDAÇÃO SANTO ANDRÉ</span>
-      <h2>Recicle. Jogue. Conquiste suas horas.</h2>
-      <p>Uma plataforma para incentivar práticas sustentáveis entre estudantes: registre materiais recicláveis, encontre postos de coleta, participe de desafios e transforme seu engajamento em horas complementares.</p>
+      <h2>Recicle e Conquiste suas horas.</h2>
+      <p>👥 GRUPO   - A turma que você está, mostra quem fez mais pontos reciclando e a quantidade de alunos.</p>
+      <p>♻️ LIXÃO   - Aba que registra o lixo que será reciclado.</p>
+      <p>🛒 LOJA    - Lugar onde você pode gastar seus pontos decorando seu perfil ou resgatando horas complementares.</p>
+      <p>⚔️ BATALHA - Dispute contra outras turmas para ver quem consegue reciclar mais e ganhe recompensas.</p>
+      <p>📍 POSTOS  - Mapa com os pontos de entrega do lixo reciclável.</p>
       <button class="btn" onclick="goToPage(2)">♻️ Registrar reciclagem</button>
     </div>
     <div class="card level-card">
@@ -60,7 +64,7 @@
 </div></section>
 
 <section class="page"><div class="container">
-  <h2 class="title">Seu Grupo 👥</h2><p class="subtitle">A pontuação coletiva incentiva a participação de todos.</p>
+  <h2 class="title">Sua Turma 👥</h2><p class="subtitle">A pontuação coletiva incentiva a participação de todos.</p>
   <div class="group-head"><div><span class="eyebrow">GRUPO ATUAL</span><div class="group-name">Guardiões da Terra</div><p class="subtitle" style="margin:6px 0 0">12 integrantes</p></div><div class="group-score"><strong>0</strong> pontos</div></div>
   <h2 style="margin-bottom:15px">🏆 Ranking</h2>
   <div class="ranking">
@@ -86,21 +90,21 @@
 <section class="page"><div class="container">
   <h2 class="title">Loja 🛒</h2><p class="subtitle">Use os pontos conquistados para desbloquear recompensas.</p>
   <div class="grid shop-grid">
-    <div class="card shop"><div class="shop-image">☕</div><h3>Impulsos</h3><div class="price">500 pts</div><button class="btn" onclick="buy('Copo EcoHora')">Resgatar</button></div>
-    <div class="card shop"><div class="shop-image">👕</div><h3>Roupas</h3><div class="price">1.000 pts</div><button class="btn" onclick="buy('Camiseta')">Resgatar</button></div>
+    <div class="card shop"><div class="shop-image">☕</div><h3>Horas Complementares</h3><div class="price">1.000 pts</div><button class="btn" onclick="buy('Copo EcoHora')">Resgatar</button></div>
+    <div class="card shop"><div class="shop-image">👕</div><h3>Roupas</h3><div class="price">500 pts</div><button class="btn" onclick="buy('Camiseta')">Resgatar</button></div>
     <div class="card shop"><div class="shop-image">🖼️</div><h3>Moldura</h3><div class="price">750 pts</div><button class="btn" onclick="buy('Voucher')">Resgatar</button></div>
-    <div class="card shop"><div class="shop-image">🏆</div><h3>Badge especial</h3><div class="price">300 pts</div><button class="btn" onclick="buy('Badge especial')">Resgatar</button></div>
+    <div class="card shop"><div class="shop-image">🏆</div><h3>Badge especial</h3><div class="price">10.000 pts</div><button class="btn" onclick="buy('Badge especial')">Resgatar</button></div>
   </div>
 </div></section>
 
 <section class="page"><div class="container">
-  <h2 class="title">Batalha ⚔️</h2><p class="subtitle">Desafios entre grupos para aumentar o engajamento.</p>
+  <h2 class="title">Batalha ⚔️</h2><p class="subtitle">Desafios entre turmas para conquistar recompensas.</p>
   <div class="battle">
     <div class="team"><div class="big">🌱</div><h2>Guardiões da Terra</h2><div class="team-score" id="teamScore">0</div><small>pontos</small><div class="battlebar"><div></div></div></div>
     <div class="vs">VS</div>
     <div class="team"><div class="big">🌊</div><h2>Eco Warriors</h2><div class="team-score">0</div><small>pontos</small><div class="battlebar"><div style="width:52%"></div></div></div>
   </div>
-  <div class="card"><span class="eyebrow">DESAFIO DA SEMANA</span><h2>Quem recicla mais?</h2><p>Registre suas entregas e ajude o seu grupo a conquistar a próxima vitória.</p><button class="btn" style="margin-top:16px" onclick="showToast('🔥 Você entrou no desafio!')">Participar</button></div>
+  <div class="card"><span class="eyebrow">DESAFIO DA SEMANA</span><h2>Quem recicla mais?</h2><p>Registre suas entregas e ajude a sua turma a conquistar a próxima vitória.</p><button class="btn" style="margin-top:16px" onclick="showToast('🔥 Você entrou no desafio!')">Participar</button></div>
 </div></section>
 
 <section class="page"><div class="container">
