@@ -5,6 +5,7 @@
 }
 
 :root {
+    --bf: white;
     --bg: #071f1c;
     --bg2: #0b2924;
     --card: #103832;
@@ -63,7 +64,8 @@ header {
 
     padding: 0 28px;
 
-    background: rgba(7, 31, 28, .96);
+    background: var(--bf);
+    /*background: rgba(7, 31, 28, .96);*/
 
     border-bottom: 1px solid var(--line);
 
@@ -85,6 +87,7 @@ header {
 
 .brand h1 {
     font-size: 25px;
+    color: var(--green);
 }
 
 .brand h1 span {
@@ -113,6 +116,12 @@ nav ul {
     gap: 5px;
 
     list-style: none;
+}
+
+ul li {
+        border-radius: 10px;
+        background: var(--bg);
+
 }
 
 nav button {
@@ -247,7 +256,11 @@ h2.title {
     font-size: clamp(30px, 4vw, 52px);
 
     margin-bottom: 8px;
+
+
+
 }
+
 
 .subtitle {
     color: var(--muted);
@@ -255,6 +268,7 @@ h2.title {
     margin-bottom: 28px;
 
     line-height: 1.55;
+
 }
 
 
@@ -620,6 +634,19 @@ h2.title {
 
     margin-bottom: 12px;
 }
+
+.recycle-papel {
+    cursor: pointer;
+
+    transition: .2s;
+
+    font-size: 45px;
+
+    margin-bottom: 12px;
+
+    color: red;
+}
+
 
 
 /* =========================================================
