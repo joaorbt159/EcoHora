@@ -20,11 +20,55 @@ async function apiRequest(endpoint, options = {}) {
     }
 
     if (!response.ok) {
-        const message =
-            data?.detail ||
-            data?.message ||
-            data?.error ||
-            `HTTP ${response.status}`;
+        let message = `HTTP ${response.status}`;
+
+        if (data?.detail) {
+
+            // Erro simples: "E-mail ou senha incorretos."
+            if (typeof data.detail === "string") {
+                message = data.detail;
+            }
+
+            // Erros de validação do FastAPI
+            else if (Array.isArray(data.detail)) {
+                message = data.detail
+                    .map(error => {
+
+                        if (typeof error === "string") {
+                            return error;
+                        }
+
+                        return (
+                            error.msg ||
+                            error.message ||
+                            JSON.stringify(error)
+                        );
+                    })
+                    .join("\n");
+            }
+
+            // Caso detail seja um objeto
+            else if (typeof data.detail === "object") {
+                message =
+                    data.detail.msg ||
+                    data.detail.message ||
+                    JSON.stringify(data.detail);
+            }
+        }
+
+        else if (data?.message) {
+            message =
+                typeof data.message === "string"
+                    ? data.message
+                    : JSON.stringify(data.message);
+        }
+
+        else if (data?.error) {
+            message =
+                typeof data.error === "string"
+                    ? data.error
+                    : JSON.stringify(data.error);
+        }
 
         throw new Error(message);
     }
@@ -32,12 +76,18 @@ async function apiRequest(endpoint, options = {}) {
     return data;
 }
 
+
+/* =========================================================
+   USUÁRIO
+========================================================= */
+
 async function registerUser(userData) {
     return apiRequest("/user/register", {
         method: "POST",
         body: JSON.stringify(userData)
     });
 }
+
 
 async function loginUser(email, password) {
     return apiRequest("/user/login", {
@@ -49,17 +99,24 @@ async function loginUser(email, password) {
     });
 }
 
+
 async function getUser(userId) {
     return apiRequest(`/user/get/${userId}`, {
         method: "GET"
     });
 }
 
+
+/* =========================================================
+   FSA
+========================================================= */
+
 async function getCourses() {
     return apiRequest("/fsa/get/courses", {
         method: "GET"
     });
 }
+
 
 async function getClasses() {
     return apiRequest("/fsa/get/clases", {
