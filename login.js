@@ -1,297 +1,340 @@
 const entrarForm =
-    document.getElementById("entrarForm");
+document.getElementById("entrarForm");
 
 const criarContaForm =
-    document.getElementById("criarContaForm");
+document.getElementById("criarContaForm");
 
 const loginForm =
-    document.getElementById("loginForm");
+document.getElementById("loginForm");
 
 const cadastroForm =
-    document.getElementById("cadastroForm");
+document.getElementById("cadastroForm");
 
 const message =
-    document.getElementById("message");
-
+document.getElementById("message");
 
 /* =========================================================
-   TROCAR PARA CADASTRO
+TROCAR PARA CADASTRO
 ========================================================= */
 
 function mostrarCadastro() {
 
-    loginForm.classList.remove("active");
 
-    cadastroForm.classList.add("active");
+loginForm.classList.remove("active");
+
+cadastroForm.classList.add("active");
+
 
 }
 
-
 /* =========================================================
-   TROCAR PARA LOGIN
+TROCAR PARA LOGIN
 ========================================================= */
 
 function mostrarLogin() {
 
-    cadastroForm.classList.remove("active");
 
-    loginForm.classList.add("active");
+cadastroForm.classList.remove("active");
+
+loginForm.classList.add("active");
+
+
+}
+
+/* =========================================================
+CRIAR CONTA
+========================================================= */
+
+criarContaForm.addEventListener(
+"submit",
+
+
+async function (event) {
+
+    event.preventDefault();
+
+
+    /* =============================================
+       PEGAR DADOS DO FORMULÁRIO
+    ============================================= */
+
+    const nome =
+        document.getElementById(
+            "cadastroNome"
+        ).value.trim();
+
+
+    const ra =
+        document.getElementById(
+            "cadastroRA"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "cadastroEmail"
+        ).value.trim();
+
+
+    const senha =
+        document.getElementById(
+            "cadastroSenha"
+        ).value;
+
+
+    const confirmarSenha =
+        document.getElementById(
+            "confirmarSenha"
+        ).value;
+
+
+    const curso =
+        document.getElementById(
+            "cadastroCurso"
+        ).value;
+
+
+    const turma =
+        document.getElementById(
+            "cadastroTurma"
+        ).value.trim();
+
+
+    /* =============================================
+       VERIFICAR SENHAS
+    ============================================= */
+
+    if (senha !== confirmarSenha) {
+
+        mostrarMensagem(
+            "As senhas não são iguais!"
+        );
+
+        return;
+
+    }
+
+
+    /* =============================================
+       DADOS DO USUÁRIO
+    ============================================= */
+
+    const userData = {
+
+        nome: nome,
+
+        ra: ra,
+
+        email: email,
+
+        password: senha,
+
+        curso: curso,
+
+        turma: turma
+
+    };
+
+
+    console.log(
+        "Dados enviados para cadastro:",
+        userData
+    );
+
+
+    try {
+
+
+        mostrarMensagem(
+            "Criando seu perfil..."
+        );
+
+
+        /* =============================================
+           CHAMA auth.js
+        ============================================= */
+
+        const resposta =
+            await register(userData);
+
+
+        console.log(
+            "Usuário criado:",
+            resposta
+        );
+
+
+        mostrarMensagem(
+            "Perfil criado com sucesso! 🌱"
+        );
+
+
+        criarContaForm.reset();
+
+
+        /* =============================================
+           VOLTA PARA LOGIN
+        ============================================= */
+
+        setTimeout(() => {
+
+            mostrarLogin();
+
+        }, 1000);
+
+
+    }
+
+    catch (erro) {
+
+
+        console.error(
+            "Erro ao criar perfil:",
+            erro
+        );
+
+
+        mostrarMensagem(
+            erro.message ||
+            "Erro ao criar o perfil."
+        );
+
+
+    }
 
 }
 
 
-/* =========================================================
-   CRIAR CONTA
-========================================================= */
-
-criarContaForm.addEventListener(
-    "submit",
-
-    async function (event) {
-
-        event.preventDefault();
-
-
-        const ra =
-            document.getElementById(
-                "cadastroRA"
-            ).value.trim();
-
-
-        const senha =
-            document.getElementById(
-                "cadastroSenha"
-            ).value;
-
-
-        const confirmarSenha =
-            document.getElementById(
-                "confirmarSenha"
-            ).value;
-
-
-        /* =============================================
-           VERIFICAR SENHAS
-        ============================================= */
-
-        if (senha !== confirmarSenha) {
-
-            mostrarMensagem(
-                "As senhas não são iguais!"
-            );
-
-            return;
-
-        }
-
-
-        /* =============================================
-           DADOS DO USUÁRIO
-        ============================================= */
-
-        const userData = {
-
-            email: ra,
-
-            password: senha
-
-        };
-
-
-        try {
-
-
-            mostrarMensagem(
-                "Criando seu perfil..."
-            );
-
-
-            /* =============================================
-               CHAMA auth.js
-            ============================================= */
-
-            const resposta =
-                await register(userData);
-
-
-            console.log(
-                "Usuário criado:",
-                resposta
-            );
-
-
-            mostrarMensagem(
-                "Perfil criado com sucesso! 🌱"
-            );
-
-
-            criarContaForm.reset();
-
-
-            /* =============================================
-               VOLTA PARA LOGIN
-            ============================================= */
-
-            setTimeout(() => {
-
-                mostrarLogin();
-
-            }, 1000);
-
-
-        }
-
-        catch (erro) {
-
-
-            console.error(erro);
-
-
-            mostrarMensagem(
-                erro.message ||
-                "Erro ao criar o perfil."
-            );
-
-
-        }
-
-    }
 );
 
-
 /* =========================================================
-   LOGIN
+LOGIN
 ========================================================= */
 
 entrarForm.addEventListener(
-    "submit",
-
-    async function (event) {
-
-        event.preventDefault();
+"submit",
 
 
-        const ra =
-            document.getElementById(
-                "loginRA"
-            ).value.trim();
+async function (event) {
+
+    event.preventDefault();
 
 
-        const senha =
-            document.getElementById(
-                "loginSenha"
-            ).value;
+    const email =
+        document.getElementById(
+            "loginEmail"
+        ).value.trim();
 
 
-        try {
+    const senha =
+        document.getElementById(
+            "loginSenha"
+        ).value;
 
 
-            mostrarMensagem(
-                "Entrando..."
+    try {
+
+
+        mostrarMensagem(
+            "Entrando..."
+        );
+
+
+        const resposta =
+            await login(
+                email,
+                senha
             );
 
 
-            /* =============================================
-               CHAMA auth.js
-
-               O RA é enviado como "email"
-               porque é assim que a API atual
-               está estruturada.
-            ============================================= */
-
-            const resposta =
-                await login(
-                    ra,
-                    senha
-                );
+        console.log(
+            "Login realizado:",
+            resposta
+        );
 
 
-            console.log(
-                "Login realizado:",
-                resposta
-            );
+        /* =============================================
+           SALVAR EMAIL DA SESSÃO
+        ============================================= */
+
+        localStorage.setItem(
+            "usuarioEmail",
+            email
+        );
 
 
-            /* =============================================
-               SALVAR RA DA SESSÃO
-            ============================================= */
-
-            localStorage.setItem(
-                "usuarioRA",
-                ra
-            );
+        mostrarMensagem(
+            "Login realizado com sucesso! 🚀"
+        );
 
 
-            mostrarMensagem(
-                "Login realizado com sucesso! 🚀"
-            );
+        /* =============================================
+           IR PARA HOME
+        ============================================= */
 
+        setTimeout(() => {
 
-            /* =============================================
-               IR PARA HOME
-            ============================================= */
+            window.location.href =
+                "index.html";
 
-            setTimeout(() => {
+        }, 800);
 
-                window.location.href =
-                    "index.html";
-
-            }, 800);
-
-
-        }
-
-        catch (erro) {
-
-
-            console.error(erro);
-
-
-            mostrarMensagem(
-                erro.message ||
-                "RA ou senha incorretos!"
-            );
-
-
-        }
 
     }
+
+    catch (erro) {
+
+
+        console.error(
+            "Erro ao fazer login:",
+            erro
+        );
+
+
+        mostrarMensagem(
+            erro.message ||
+            "Email ou senha incorretos!"
+        );
+
+
+    }
+
+}
+
+
 );
 
-
 /* =========================================================
-   MENSAGENS
+MENSAGENS
 ========================================================= */
 
 let messageTimeout;
 
-
 function mostrarMensagem(texto) {
 
 
-    clearTimeout(
-        messageTimeout
-    );
+clearTimeout(
+    messageTimeout
+);
 
 
-    message.textContent =
-        texto;
+message.textContent =
+    texto;
 
 
-    message.classList.add(
-        "show"
-    );
+message.classList.add(
+    "show"
+);
 
 
-    messageTimeout =
-        setTimeout(() => {
+messageTimeout =
+    setTimeout(() => {
 
+        message.classList.remove(
+            "show"
+        );
 
-            message.classList.remove(
-                "show"
-            );
+    }, 3000);
 
-
-        }, 3000);
 
 }

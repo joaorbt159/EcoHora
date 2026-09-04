@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 :root {
 
     --bg: #071f1c;
@@ -414,6 +413,26 @@ body {
 
 }
 
+.input-group select {
+    width: 100%;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--line);
+
+    outline: none;
+
+    background: #09251f;
+
+    color: white;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
 
 .input-group input::placeholder {
 
@@ -422,14 +441,18 @@ body {
 }
 
 
-.input-group input:focus {
-
+.input-group input:focus,
+.input-group select:focus {
     border-color: var(--green);
 
     box-shadow:
         0 0 0 3px
         rgba(41, 199, 119, 0.1);
+}
 
+.input-group select option {
+    background: #09251f;
+    color: white;
 }
 
 

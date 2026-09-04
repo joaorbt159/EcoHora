@@ -1,308 +1,434 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
 
-    <title>Login - EcoHora</title>
+<meta charset="UTF-8">
 
-    <link
-        rel="stylesheet"
-        href="estilos/login.css"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Login - EcoHora</title>
+
+<link
+    rel="stylesheet"
+    href="estilos/login.css"
+>
+
 
 </head>
-
 
 <body>
 
 
-    <main class="login-container">
+<main class="login-container">
 
 
-        <!-- LADO ESQUERDO -->
+    <!-- LADO ESQUERDO -->
 
-        <section class="login-info">
+    <section class="login-info">
 
-            <div class="logo">
 
-                <div class="logo-icon">
-                    ♻
+        <div class="logo">
+
+            <div class="logo-icon">
+                ♻
+            </div>
+
+            <h1>
+                Eco<span>Hora</span>
+            </h1>
+
+        </div>
+
+
+        <div class="info-content">
+
+
+            <span class="tag">
+                🌱 RECICLE E CONQUISTE
+            </span>
+
+
+            <h2>
+                Transforme suas ações em conquistas.
+            </h2>
+
+
+            <p>
+                Recicle materiais, participe de desafios
+                e conquiste horas complementares.
+            </p>
+
+
+            <div class="benefits">
+
+
+                <div class="benefit">
+
+                    ♻️
+
+                    <span>
+                        Recicle materiais
+                    </span>
+
                 </div>
 
-                <h1>
-                    Eco<span>Hora</span>
-                </h1>
+
+                <div class="benefit">
+
+                    ⭐
+
+                    <span>
+                        Ganhe pontos e XP
+                    </span>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    🎓
+
+                    <span>
+                        Conquiste horas complementares
+                    </span>
+
+                </div>
+
 
             </div>
 
 
-            <div class="info-content">
+        </div>
 
-                <span class="tag">
-                    🌱 RECICLE E CONQUISTE
-                </span>
+
+    </section>
+
+
+    <!-- LADO DIREITO -->
+
+    <section class="login-area">
+
+
+        <div class="form-box">
+
+
+            <!-- FORMULÁRIO DE LOGIN -->
+
+            <div
+                class="form-container active"
+                id="loginForm"
+            >
 
 
                 <h2>
-                    Transforme suas ações em conquistas.
+                    Bem-vindo de volta! 👋
                 </h2>
 
 
-                <p>
-                    Recicle materiais, participe de desafios
-                    e conquiste horas complementares.
+                <p class="form-description">
+                    Entre na sua conta para continuar sua jornada.
                 </p>
 
 
-                <div class="benefits">
+                <form id="entrarForm">
 
-                    <div class="benefit">
-                        ♻️
-                        <span>
-                            Recicle materiais
-                        </span>
+
+                    <!-- EMAIL -->
+
+                    <div class="input-group">
+
+                        <label for="loginEmail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Digite seu email"
+                            required
+                        >
+
                     </div>
 
 
-                    <div class="benefit">
-                        ⭐
-                        <span>
-                            Ganhe pontos e XP
-                        </span>
+                    <!-- SENHA -->
+
+                    <div class="input-group">
+
+                        <label for="loginSenha">
+                            Senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="loginSenha"
+                            placeholder="Digite sua senha"
+                            required
+                        >
+
                     </div>
 
 
-                    <div class="benefit">
-                        🎓
-                        <span>
-                            Conquiste horas complementares
-                        </span>
-                    </div>
+                    <button
+                        type="submit"
+                        class="main-button"
+                    >
+                        Entrar
+                    </button>
 
-                </div>
 
-            </div>
+                </form>
 
-        </section>
 
+                <p class="switch-text">
 
+                    Ainda não possui uma conta?
 
-        <!-- LADO DIREITO -->
+                    <button
+                        type="button"
+                        onclick="mostrarCadastro()"
+                    >
+                        Criar perfil
+                    </button>
 
-        <section class="login-area">
-
-
-            <div class="form-box">
-
-
-                <!-- LOGIN -->
-
-                <div
-                    class="form-container active"
-                    id="loginForm"
-                >
-
-                    <h2>
-                        Bem-vindo de volta! 👋
-                    </h2>
-
-
-                    <p class="form-description">
-                        Entre com seu RA e senha.
-                    </p>
-
-
-                    <form id="entrarForm">
-
-
-                        <div class="input-group">
-
-                            <label for="loginRA">
-                                RA
-                            </label>
-
-
-                            <input
-                                type="text"
-                                id="loginRA"
-                                placeholder="Digite seu RA"
-                                required
-                            >
-
-                        </div>
-
-
-
-                        <div class="input-group">
-
-                            <label for="loginSenha">
-                                Senha
-                            </label>
-
-
-                            <input
-                                type="password"
-                                id="loginSenha"
-                                placeholder="Digite sua senha"
-                                required
-                            >
-
-                        </div>
-
-
-
-                        <button
-                            type="submit"
-                            class="main-button"
-                        >
-                            Entrar
-                        </button>
-
-                    </form>
-
-
-
-                    <p class="switch-text">
-
-                        Ainda não possui uma conta?
-
-                        <button
-                            type="button"
-                            onclick="mostrarCadastro()"
-                        >
-                            Criar perfil
-                        </button>
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- CADASTRO -->
-
-                <div
-                    class="form-container"
-                    id="cadastroForm"
-                >
-
-                    <h2>
-                        Crie seu perfil 🌱
-                    </h2>
-
-
-                    <p class="form-description">
-                        Comece sua jornada sustentável.
-                    </p>
-
-
-                    <form id="criarContaForm">
-
-
-                        <div class="input-group">
-
-                            <label for="cadastroRA">
-                                RA
-                            </label>
-
-
-                            <input
-                                type="text"
-                                id="cadastroRA"
-                                placeholder="Digite seu RA"
-                                required
-                            >
-
-                        </div>
-
-
-
-                        <div class="input-group">
-
-                            <label for="cadastroSenha">
-                                Crie uma senha
-                            </label>
-
-
-                            <input
-                                type="password"
-                                id="cadastroSenha"
-                                placeholder="Digite uma senha"
-                                required
-                            >
-
-                        </div>
-
-
-
-                        <div class="input-group">
-
-                            <label for="confirmarSenha">
-                                Confirmar senha
-                            </label>
-
-
-                            <input
-                                type="password"
-                                id="confirmarSenha"
-                                placeholder="Digite a senha novamente"
-                                required
-                            >
-
-                        </div>
-
-
-
-                        <button
-                            type="submit"
-                            class="main-button"
-                        >
-                            Criar perfil
-                        </button>
-
-                    </form>
-
-
-
-                    <p class="switch-text">
-
-                        Já possui uma conta?
-
-                        <button
-                            type="button"
-                            onclick="mostrarLogin()"
-                        >
-                            Entrar
-                        </button>
-
-                    </p>
-
-                </div>
+                </p>
 
 
             </div>
 
-        </section>
+
+            <!-- FORMULÁRIO DE CADASTRO -->
+
+            <div
+                class="form-container"
+                id="cadastroForm"
+            >
 
 
-    </main>
+                <h2>
+                    Crie seu perfil 🌱
+                </h2>
 
 
-    <div
-        class="message"
-        id="message"
-    >
-    </div>
+                <p class="form-description">
+                    Preencha seus dados para começar sua jornada no EcoHora.
+                </p>
 
-    <script src="api.js"></script>
-    <script src="auth.js"></script>
-    <script src="login.js"></script>
+
+                <form id="criarContaForm">
+
+
+                    <!-- NOME -->
+
+                    <div class="input-group">
+
+                        <label for="cadastroNome">
+                            Nome completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cadastroNome"
+                            placeholder="Digite seu nome completo"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- RA -->
+
+                    <div class="input-group">
+
+                        <label for="cadastroRA">
+                            RA
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cadastroRA"
+                            placeholder="Digite seu RA"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="input-group">
+
+                        <label for="cadastroEmail">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="cadastroEmail"
+                            placeholder="Digite seu email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- SENHA -->
+
+                    <div class="input-group">
+
+                        <label for="cadastroSenha">
+                            Senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="cadastroSenha"
+                            placeholder="Crie uma senha"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CONFIRMAR SENHA -->
+
+                    <div class="input-group">
+
+                        <label for="confirmarSenha">
+                            Confirmar senha
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmarSenha"
+                            placeholder="Digite sua senha novamente"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CURSO -->
+
+                    <div class="input-group">
+
+                        <label for="cadastroCurso">
+                            Curso
+                        </label>
+
+                        <select
+                            id="cadastroCurso"
+                            required
+                        >
+
+                            <option value="">
+                                Selecione seu curso
+                            </option>
+
+                            <option value="ADS">
+                                Análise e Desenvolvimento de Sistemas
+                            </option>
+
+                            <option value="Marketing">
+                                Marketing
+                            </option>
+
+                            <option value="Medicina">
+                                Medicina
+                            </option>
+
+                            <!--
+                                ADICIONE NOVOS CURSOS AQUI
+
+                                Exemplo:
+
+                                <option value="Direito">
+                                    Direito
+                                </option>
+                            -->
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- TURMA -->
+
+                    <div class="input-group">
+
+                        <label for="cadastroTurma">
+                            Turma
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cadastroTurma"
+                            placeholder="Ex: 3° B Noturno"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="main-button"
+                    >
+                        Criar perfil
+                    </button>
+
+
+                </form>
+
+
+                <p class="switch-text">
+
+                    Já possui uma conta?
+
+                    <button
+                        type="button"
+                        onclick="mostrarLogin()"
+                    >
+                        Entrar
+                    </button>
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- MENSAGENS DE ERRO/SUCESSO -->
+
+<div
+    class="message"
+    id="message"
+>
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="api.js"></script>
+
+<script src="auth.js"></script>
+
+<script src="login.js"></script>
 
 
 </body>
